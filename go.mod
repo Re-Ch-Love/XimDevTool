@@ -1,4 +1,4 @@
-module XimDevTool
+module github.com/Re-Ch-Love/XimDevTool
 
 go 1.18
 

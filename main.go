@@ -1,8 +1,8 @@
 package main
 
 import (
-	"XimDevTool/commands/preview"
 	"fmt"
+	"github.com/Re-Ch-Love/XimDevTool/commands/preview"
 	"github.com/urfave/cli/v2"
 	"os"
 )
