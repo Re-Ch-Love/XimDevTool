@@ -451,7 +451,8 @@ func Project(addr string, path string) error {
 				clearName := filepath.Clean(event.Name)
 				if clearName == filepath.Join(path, "main.wasm") ||
 					clearName == filepath.Join(path, "go.mod") ||
-					clearName == filepath.Join(path, "go.sum") {
+					clearName == filepath.Join(path, "go.sum") ||
+					clearName == filepath.Join(path, ".xim") {
 					continue
 				}
 				fmt.Println("watcher event:", event.String())
