@@ -1,0 +1,4 @@
+github.com/Re-Ch-Love/xim v0.0.0-20220502125705-8e5fc38d860e h1:LHux3xaxXGanx81Qdb2Y7Fmbq+cqg3t0/ZhcgEyCPoc=
+github.com/Re-Ch-Love/xim v0.0.0-20220502125705-8e5fc38d860e/go.mod h1:8k2Oex7FIgjCve9Nw+scy+wdTufOiZDoR2y4p5VYeLg=
+github.com/google/uuid v1.3.0 h1:t6JiXgmwXMjEs8VusXIJk2BXHsn+wx8BZdTaoZ5fu7I=
+github.com/google/uuid v1.3.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=

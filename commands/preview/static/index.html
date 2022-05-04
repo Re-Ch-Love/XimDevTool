@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+</head>
+<body>
+<script src="wasm_exec.js"></script>
+<script src="crypto-js.min.js"></script>
+<script>
+    function ArrayBufferToWordArray(arrayBuffer) {
+        const u8 = new Uint8Array(arrayBuffer, 0, arrayBuffer.byteLength);
+        const len = u8.length;
+        const words = [];
+        for (let i = 0; i < len; i += 1) {
+            words[i >>> 2] |= (u8[i] & 0xff) << (24 - (i % 4) * 8);
+        }
+        return CryptoJS.lib.WordArray.create(words, len);
+    }
+    let lastHash = '';
+    let f = function () {
+        const go = new Go();
+        fetch("main.wasm").then((result) => {
+            result.arrayBuffer().then((buffer) => {
+                let hash = CryptoJS.MD5(ArrayBufferToWordArray(buffer)).toString();
+                if (lastHash === '') {
+                    lastHash = hash;
+                    WebAssembly.instantiate(buffer, go.importObject)
+                        .then((result) => {
+                            go.run(result.instance)
+                        });
+                } else if (lastHash !== hash) {
+                    lastHash = hash;
+                    document.body.lastElementChild.remove()
+                    WebAssembly.instantiate(buffer, go.importObject)
+                        .then((result) => {
+                            go.run(result.instance)
+                        });
+                }
+            });
+        })
+    }
+    f()
+    setInterval(f, 1000)
+</script>
+</body>
+</html>

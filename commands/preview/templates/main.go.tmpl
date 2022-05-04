@@ -1,0 +1,12 @@
+package main
+
+import (
+	"github.com/Re-Ch-Love/xim"
+	c "xim_generated/{{PackageName}}"
+)
+
+func main() {
+	xim.SetTitle("Preview: {{PackageName}}")
+	xim.SetContent(c.{{VarName}})
+	xim.Finish()
+}
